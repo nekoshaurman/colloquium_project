@@ -6,40 +6,35 @@ import java.util.*;
 
 public class CyclomaticNumberModule implements GraphCharacteristic
 {
-    public Integer n = 10;
-    public Integer e = 9;
-    public LinkedList<Integer>[] g;
-    public boolean[] visited;
+    ArrayList<int> g = new ArrayList<>(3);
 
-    public void DFS(int v) {
+
+    void DFS(int v, boolean[] visited) {
         visited[v] = true;
-        for (int adj : g[v])
+        for (Integer adj : g.get(v))
         {
             if (!visited[adj])
             {
-                DFS(adj);
+                DFS(adj, visited);
             }
         }
     }
-    public int Cyclomatic_Number() {
-        int c = 0;
-        for (int i = 0; i< n; ++i)
-        {
-            visited[i] = false;
-        }
-        for (int i = 0; i< n; ++i)
+    Integer Cyclomatic_Number(Integer vertexCount, Integer edgeCount) {
+        int count_connectivity_components = 0;
+        boolean[] visited = new boolean[vertexCount];
+        for (int i = 0; i < vertexCount; ++i)
         {
             if (!visited[i])
             {
-                DFS(i);
-                c++;
+                DFS(i, visited);
+                ++count_connectivity_components;
             }
         }
-        return (e - n + c);
+        return (edgeCount - vertexCount + count_connectivity_components);
     }
 
     @Override
     public Integer execute(Graph graph) {
-        return Cyclomatic_Number();
+        return Cyclomatic_Number(graph.getVertexCount(), graph.getEdgeCount());
     }
 }
