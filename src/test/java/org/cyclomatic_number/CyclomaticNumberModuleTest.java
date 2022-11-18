@@ -13,7 +13,7 @@ class CyclomaticNumberModuleTest {
     void TestCyclomaticNumberModule() throws FileNotFoundException {
         CyclomaticNumberModule cyclomaticNumberModule = new CyclomaticNumberModule();
 
-        File graph = new File("Test_cyclomatic_number/Test1_6.txt");
+        File graph = new File("Test_Charact/Test1_6.txt");
         Assertions.assertEquals(6,
                 cyclomaticNumberModule.execute(GraphFactory.loadGraphFromFile(graph)));
     }

@@ -6,14 +6,12 @@ import java.util.*;
 
 public class CyclomaticNumberModule implements GraphCharacteristic
 {
-    /*@Override*/
     public Integer n = 10;
     public Integer e = 9;
     public LinkedList<Integer>[] g;
     public boolean[] visited;
 
-    public void DFS(int v)
-    {
+    public void DFS(int v) {
         visited[v] = true;
         for (int adj : g[v])
         {
@@ -23,8 +21,7 @@ public class CyclomaticNumberModule implements GraphCharacteristic
             }
         }
     }
-    public int Cyclomatic_Number()
-    {
+    public int Cyclomatic_Number() {
         int c = 0;
         for (int i = 0; i< n; ++i)
         {
@@ -41,8 +38,8 @@ public class CyclomaticNumberModule implements GraphCharacteristic
         return (e - n + c);
     }
 
-    public Integer execute(Graph graph)
-    {
+    @Override
+    public Integer execute(Graph graph) {
         return Cyclomatic_Number();
     }
 }
