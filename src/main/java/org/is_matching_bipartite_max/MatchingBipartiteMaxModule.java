@@ -52,6 +52,12 @@ public class MatchingBipartiteMaxModule implements GraphProperty {
             UUID temp = edge_list.get(i).getFromV();
             System.out.println("\n" + temp + " вершина, массив - " + incidence_array.get(temp));
         }
+
+        for(int i = 0; i < graph.getEdgeCount(); i++){
+            if(incidence_array.get(edge_list.get(i).getToV()) == null){
+                //incidence_array.get(edge_list.get())
+            }
+        }
         return false;
 
     }
