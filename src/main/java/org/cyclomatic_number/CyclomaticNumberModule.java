@@ -7,20 +7,11 @@ import com.mathsystem.domain.graph.repository.GraphType;
 import com.mathsystem.domain.plugin.plugintype.GraphCharacteristic;
 import java.util.*;
 
-public class CyclomaticNumberModule implements GraphCharacteristic
-{
-
-    // function to perform DFS on the graph
-    void DFS(int start, boolean[] visited, int[][] adj)
-    {
-
+public class CyclomaticNumberModule implements GraphCharacteristic {
+    void DFS(int start, boolean[] visited, int[][] adj) {
         visited[start] = true;
 
-        // For every node of the graph
         for (int i = 0; i < adj[start].length; i++) {
-
-            // If some node is adjacent to the current node
-            // and it has not already been visited
             if (adj[start][i] == 1 && (!visited[i])) {
                 DFS(i, visited, adj);
             }
@@ -32,7 +23,7 @@ public class CyclomaticNumberModule implements GraphCharacteristic
         boolean[] visited = new boolean[vertexCount];
         for (int i = 0; i < vertexCount; ++i)
         {
-            if (!visited[i])            {
+            if (!visited[i]) {
                 DFS(i, visited, adj);
                 ++count_connectivity_components;
             }
@@ -48,48 +39,27 @@ public class CyclomaticNumberModule implements GraphCharacteristic
         return r;
     }
 
-    @Override
-    public Integer execute(Graph graph) {
-
-
-
-
-        List<Edge> edges = graph.getEdges(); // list of edges
-        GraphType type = graph.getDirectType(); // graph type: DIRECTED or UNDIRECTED
-
-        UUID[] vert = new UUID[graph.getVertexCount()];
-        int [][] matrix = new int[graph.getVertexCount()][graph.getVertexCount()];
+    int[][] get_adj(Map<UUID, Vertex> g, Integer Vertex_count, List<Edge> edges, GraphType type){
+        UUID[] vert = new UUID[Vertex_count];
+        int [][] adj = new int[Vertex_count][Vertex_count];
 
         int i=-1;
-        Map<UUID, Vertex> g = graph.getVertices();
-        for (Map.Entry<UUID, Vertex> f : g.entrySet() ) {
+        for (Map.Entry<UUID, Vertex> f : g.entrySet())
             vert[++i] = f.getKey();
+
+        for (Edge tmp : edges){
+            int from = find(vert, tmp.getFromV());
+            int to = find(vert, tmp.getToV());
+            adj[from][to] = 1;
+            if (type == GraphType.UNDIRECTED)
+                adj[to][from] = 1;
         }
 
+        return adj;
+    }
 
-        for (int z = 0; z < edges.size(); z++) {
-            Edge tmp = edges.get(z);
-            UUID from = tmp.getFromV();
-            UUID to = tmp.getToV();
-            /*System.out.println(from + "    0000000000000000000000000   " + to);
-            System.out.println( find(vert, from)+ "    tttttttttttttttttt   " + find(vert, to));*/
-            matrix[find(vert, from)][find(vert, to)] = 1;
-
-        }
-
-
-
-
-
-        /*for (int j=0; j < graph.getVertexCount(); j++){
-            System.out.println(vert[j]);
-        }
-        Arrays.stream(matrix).map(Arrays::toString).forEach(System.out::println);*/
-
-
-
-
-
-        return Cyclomatic_Number(graph.getVertexCount(), graph.getEdgeCount(), matrix);
+    @Override
+    public Integer execute(Graph graph) {
+        return Cyclomatic_Number(graph.getVertexCount(), graph.getEdgeCount(), get_adj(graph.getVertices(), graph.getVertexCount(), graph.getEdges(), graph.getDirectType()));
     }
 }
