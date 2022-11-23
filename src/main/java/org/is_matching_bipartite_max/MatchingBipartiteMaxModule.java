@@ -43,5 +43,4 @@ public class MatchingBipartiteMaxModule implements GraphProperty {
         return true;
     }
 
-
 }
