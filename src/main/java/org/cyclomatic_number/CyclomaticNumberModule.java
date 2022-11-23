@@ -60,7 +60,6 @@ public class CyclomaticNumberModule implements GraphCharacteristic {
 
     @Override
     public Integer execute(Graph graph) {
-
         return Cyclomatic_Number(graph.getVertexCount(), graph.getEdgeCount(), get_adj(graph.getVertices(), graph.getVertexCount(), graph.getEdges(), graph.getDirectType()));
     }
 }
