@@ -16,6 +16,7 @@ public class CyclomaticNumberModule implements GraphCharacteristic {
                 DFS(i, visited, adj);
             }
         }
+
     }
 
     Integer Cyclomatic_Number(Integer vertexCount, Integer edgeCount, int[][] adj) {
