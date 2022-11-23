@@ -10,23 +10,30 @@ import java.util.*;
 public class CyclomaticNumberModule implements GraphCharacteristic
 {
 
-    void DFS(int v, boolean[] visited, List<Edge> edges) {
-        visited[v] = true;
-        LinkedList<Integer>[] g = new LinkedList[10];
-        for (Integer adj : g[9])
-        {
-            if (!visited[adj])
-                DFS(adj, visited, edges);
+    // function to perform DFS on the graph
+    void DFS(int start, boolean[] visited, int[][] adj)
+    {
+
+        visited[start] = true;
+
+        // For every node of the graph
+        for (int i = 0; i < adj[start].length; i++) {
+
+            // If some node is adjacent to the current node
+            // and it has not already been visited
+            if (adj[start][i] == 1 && (!visited[i])) {
+                DFS(i, visited, adj);
+            }
         }
     }
 
-    Integer Cyclomatic_Number(Integer vertexCount, Integer edgeCount, List<Edge> edges) {
+    Integer Cyclomatic_Number(Integer vertexCount, Integer edgeCount, int[][] adj) {
         int count_connectivity_components = 0;
         boolean[] visited = new boolean[vertexCount];
         for (int i = 0; i < vertexCount; ++i)
         {
             if (!visited[i])            {
-                DFS(i, visited, edges);
+                DFS(i, visited, adj);
                 ++count_connectivity_components;
             }
         }
@@ -51,7 +58,7 @@ public class CyclomaticNumberModule implements GraphCharacteristic
         GraphType type = graph.getDirectType(); // graph type: DIRECTED or UNDIRECTED
 
         UUID[] vert = new UUID[graph.getVertexCount()];
-        boolean [][] matrix = new boolean[graph.getVertexCount()][graph.getVertexCount()];
+        int [][] matrix = new int[graph.getVertexCount()][graph.getVertexCount()];
 
         int i=-1;
         Map<UUID, Vertex> g = graph.getVertices();
@@ -66,7 +73,7 @@ public class CyclomaticNumberModule implements GraphCharacteristic
             UUID to = tmp.getToV();
             /*System.out.println(from + "    0000000000000000000000000   " + to);
             System.out.println( find(vert, from)+ "    tttttttttttttttttt   " + find(vert, to));*/
-            matrix[find(vert, from)][find(vert, to)] = true;
+            matrix[find(vert, from)][find(vert, to)] = 1;
 
         }
 
@@ -74,15 +81,15 @@ public class CyclomaticNumberModule implements GraphCharacteristic
 
 
 
-        for (int j=0; j < graph.getVertexCount(); j++){
+        /*for (int j=0; j < graph.getVertexCount(); j++){
             System.out.println(vert[j]);
         }
-        Arrays.stream(matrix).map(Arrays::toString).forEach(System.out::println);
+        Arrays.stream(matrix).map(Arrays::toString).forEach(System.out::println);*/
 
 
 
 
 
-        return 0;//Cyclomatic_Number(graph.getVertexCount(), graph.getEdgeCount(), graph.getEdges());
+        return Cyclomatic_Number(graph.getVertexCount(), graph.getEdgeCount(), matrix);
     }
 }
