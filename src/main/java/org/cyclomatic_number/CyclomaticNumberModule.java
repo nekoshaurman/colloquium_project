@@ -64,8 +64,8 @@ public class CyclomaticNumberModule implements GraphCharacteristic
             Edge tmp = edges.get(z);
             UUID from = tmp.getFromV();
             UUID to = tmp.getToV();
-            System.out.println(from + "    0000000000000000000000000   " + to);
-            System.out.println( find(vert, from)+ "    tttttttttttttttttt   " + find(vert, to));
+            /*System.out.println(from + "    0000000000000000000000000   " + to);
+            System.out.println( find(vert, from)+ "    tttttttttttttttttt   " + find(vert, to));*/
             matrix[find(vert, from)][find(vert, to)] = true;
 
         }
