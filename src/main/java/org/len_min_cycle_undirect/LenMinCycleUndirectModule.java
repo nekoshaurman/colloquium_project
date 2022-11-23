@@ -21,8 +21,10 @@ public class LenMinCycleUndirectModule implements GraphCharacteristic {
         }
         return r;
     }
-    Vector<Integer>[] get_adj(Map<UUID, Vertex> g, Integer Vertex_count, List<Edge> edges, Integer Edge_count){
+    Vector<Integer>[] get_adj(Map<UUID, Vertex> g, Integer Vertex_count, List<Edge> edges){
+        @SuppressWarnings("unchecked")
         Vector<Integer>[] gr = new Vector[Vertex_count];
+
         for (int i = 0; i < Vertex_count; i++)
             gr[i] = new Vector<>();
         UUID[] vert = new UUID[Vertex_count];
@@ -106,6 +108,6 @@ public class LenMinCycleUndirectModule implements GraphCharacteristic {
 
     @Override
     public Integer execute(Graph graph) {
-        return shortest_cycle(get_adj(graph.getVertices(), graph.getVertexCount(), graph.getEdges(), graph.getEdgeCount()), graph.getVertexCount());
+        return shortest_cycle(get_adj(graph.getVertices(), graph.getVertexCount(), graph.getEdges()), graph.getVertexCount());
     }
 }
