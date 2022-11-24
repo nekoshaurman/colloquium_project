@@ -97,7 +97,7 @@ public class LenMinCycleUndirectModule implements GraphCharacteristic {
 
         // If graph contains no cycle
         if (ans == Integer.MAX_VALUE)
-            return -1;
+            return 0;
 
             // If graph contains cycle
         else
