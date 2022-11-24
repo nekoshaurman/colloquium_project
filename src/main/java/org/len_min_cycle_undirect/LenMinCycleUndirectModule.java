@@ -9,11 +9,14 @@ import java.util.*;
 
 public class LenMinCycleUndirectModule implements GraphCharacteristic {
 
+    // Функция добавления ребра в список смежности
     void Add_edge(Vector<Integer>[] gr, int x, int y)
     {
         gr[x].add(y);
         gr[y].add(x);
     }
+
+    // Функция нахождения позиции вершины в массиве вершин
     int find(UUID[] vertex, UUID num){
         int r = 0;
         for (int j=0; j < vertex.length; j++){
@@ -21,73 +24,79 @@ public class LenMinCycleUndirectModule implements GraphCharacteristic {
         }
         return r;
     }
+
+    // Функция составления списка смежности графа
+    // g - список вершин, Vertex_count - количество вершин, edges - список ребер
     Vector<Integer>[] get_adj(Map<UUID, Vertex> g, Integer Vertex_count, List<Edge> edges){
         @SuppressWarnings("unchecked")
+        // gr - список смежности
         Vector<Integer>[] gr = new Vector[Vertex_count];
 
         for (int i = 0; i < Vertex_count; i++)
             gr[i] = new Vector<>();
+        // массив вершин графа
         UUID[] vert = new UUID[Vertex_count];
 
+        // Добавляем все id вершин графа в массив вершин графа
         int i=-1;
         for (Map.Entry<UUID, Vertex> f : g.entrySet())
             vert[++i] = f.getKey();
 
+        // Проходимся по всем ребрам и заполняем список смежности(вершина откуда начинается ребро, куда идет ребро)
         for (Edge tmp : edges){
             int from = find(vert, tmp.getFromV());
             int to = find(vert, tmp.getToV());
             Add_edge(gr, from, to);
         }
-
         return gr;
     }
 
+    // Функция нахождения минимального цикла
     int shortest_cycle(Vector<Integer>[] gr, int n)
     {
-
-        // To store length of the shortest cycle
+        // Для хранения длины наименьшего цикла
         int ans = Integer.MAX_VALUE;
 
-        // For all vertices
+        // Для всех вершин
         for (int i = 0; i < n; i++)
         {
 
-            // Make distance maximum
+            // Сделать расстояние максимальным
             int[] dist = new int[n];
             Arrays.fill(dist, (int) 1e9);
 
-            // Take a imaginary parent
+            // Создадим родительскую вершину
             int[] par = new int[n];
             Arrays.fill(par, -1);
 
-            // Distance of source to source is 0
+            // Расстояние для элемента сделаем 0
             dist[i] = 0;
             Queue<Integer> q = new LinkedList<>();
 
-            // Push the source element
+            // Добавим элемент в очередь
             q.add(i);
 
-            // Continue until queue is not empty
+           // Выполняем до тех пор пока очередь не пустая
             while (!q.isEmpty())
             {
 
-                // Take the first element
+                // Берем первый элемент
                 int x = q.poll();
 
-                // Traverse for all it's childs
+                // Пройтись по всем смежным вершинам
                 for (int child : gr[x])
                 {
-                    // If it is not visited yet
+                    // Если еще не посещали
                     if (dist[child] == (int) (1e9))
                     {
 
-                        // Increase distance by 1
+                        // Увеличиваем расстояние на 1
                         dist[child] = 1 + dist[x];
 
-                        // Change parent
+                        // Меняем родителя
                         par[child] = x;
 
-                        // Push into the queue
+                        // Добавляем в очередь
                         q.add(child);
                     } else if (par[x] != child && par[child] != x)
                         ans = Math.min(ans, dist[x] + dist[child] + 1);
@@ -95,11 +104,11 @@ public class LenMinCycleUndirectModule implements GraphCharacteristic {
             }
         }
 
-        // If graph contains no cycle
+        // Если в графе нет циклов
         if (ans == Integer.MAX_VALUE)
             return 0;
 
-            // If graph contains cycle
+        // Если есть цикл, вернуть размер минимального цикла
         else
             return ans;
     }
