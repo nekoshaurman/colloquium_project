@@ -13,8 +13,8 @@ class LenMinCycleUndirectModuleTest {
     void TestLenMinCycleUndirectModule() throws FileNotFoundException {
         LenMinCycleUndirectModule lenMinCycleUndirectModule = new LenMinCycleUndirectModule();
 
-        File graph = new File("Test_len_min_undirect/Test1_6.txt");
-        Assertions.assertEquals(6,
+        File graph = new File("Test_len_min_undirect/Test1_3.txt");
+        Assertions.assertEquals(3,
                 lenMinCycleUndirectModule.execute(GraphFactory.loadGraphFromFile(graph)));
     }
 }
