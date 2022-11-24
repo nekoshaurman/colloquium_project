@@ -1,20 +1,15 @@
-UNDIRECTED 10
- 7
-104b8c11-fe3f-4648-9b53-40843319a880 gray null null 364 130
-a5f344a2-d4a9-45a1-93d2-2d8869826e71 gray null null 361 239
-5af8e888-d171-4109-b1e1-8ca81ff83ac4 gray null null 509 108
-96cd462b-719b-4dfd-956e-7a796a3f00a8 gray null null 538 205
-768b163f-22a1-41f1-be59-ba77833731fb gray null null 182 162
-11db902f-e0da-4792-83ee-4eb2e1f1f6bd gray null null 160 293
-afb5a7f5-3a14-430e-9070-6eb569c02d9d gray null null 284 449
-9ca40681-a986-424d-bdc7-099c1e4b591f gray null null 475 438
-2bb9e069-64f8-4240-8868-0e810439de3b gray null null 609 331
-90b0b3cc-9ab0-4a98-8913-252a9699ccde gray null null 386 335
-768b163f-22a1-41f1-be59-ba77833731fb 104b8c11-fe3f-4648-9b53-40843319a880 gray null null 
-104b8c11-fe3f-4648-9b53-40843319a880 5af8e888-d171-4109-b1e1-8ca81ff83ac4 gray null null 
-5af8e888-d171-4109-b1e1-8ca81ff83ac4 96cd462b-719b-4dfd-956e-7a796a3f00a8 gray null null 
-96cd462b-719b-4dfd-956e-7a796a3f00a8 a5f344a2-d4a9-45a1-93d2-2d8869826e71 gray null null 
-a5f344a2-d4a9-45a1-93d2-2d8869826e71 90b0b3cc-9ab0-4a98-8913-252a9699ccde gray null null 
-2bb9e069-64f8-4240-8868-0e810439de3b 9ca40681-a986-424d-bdc7-099c1e4b591f gray null null 
-9ca40681-a986-424d-bdc7-099c1e4b591f afb5a7f5-3a14-430e-9070-6eb569c02d9d gray null null 
-
+UNDIRECTED 13
+ 0
+2582c058-e571-4dd1-8e8f-dda89d8c3003 gray null null 401 274
+acda24c9-060f-4043-9bf3-e06d974d0a77 gray null null 391 447
+a49c66b6-5585-425d-a94a-0531641dd3cf gray null null 538 290
+fdae9ab1-daef-4d51-bcce-c3f6dece1063 gray null null 599 452
+674cc0f9-6a66-4f08-85df-6f8c241d4023 gray null null 451 367
+548924d0-97e9-4f0b-a4ec-cbd551ecb242 gray null null 257 362
+83a4f43d-a271-4d79-bad3-14feb81cfb1e gray null null 404 578
+bef3687f-2f99-4958-a582-809fdcf35cd7 gray null null 583 386
+5711bf86-d126-4fc4-b185-2368a2c9e3cf gray null null 252 446
+c3cbccb3-421a-414a-a8c8-4d47f6d2840a gray null null 371 313
+a56334b9-7154-4d78-b34a-5fa8051a392d gray null null 493 517
+005cdfae-49c0-420b-9dff-abc02cf4f717 gray null null 292 518
+60aa9d93-3adf-4aa5-8bd9-94ece70d8594 gray null null 653 604
