@@ -13,8 +13,8 @@ class MatchingBipartiteMaxModuleTest {
     void TestMatchingBipartiteMaxModule() throws FileNotFoundException {
         MatchingBipartiteMaxModule matchingBipartiteMaxModule = new MatchingBipartiteMaxModule();
 
-        File graph = new File("Test_bipartite/Test1_False.txt");
-        Assertions.assertEquals(false,
+        File graph = new File("Test_bipartite/Test1_True.txt");
+        Assertions.assertEquals(true,
                 matchingBipartiteMaxModule.execute(GraphFactory.loadGraphFromFile(graph)));
     }
 }
