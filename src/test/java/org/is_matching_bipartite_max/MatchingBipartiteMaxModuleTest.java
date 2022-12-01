@@ -16,5 +16,21 @@ class MatchingBipartiteMaxModuleTest {
         File graph = new File("Test_bipartite/Test1_True.txt");
         Assertions.assertEquals(true,
                 matchingBipartiteMaxModule.execute(GraphFactory.loadGraphFromFile(graph)));
+
+        graph = new File("Test_bipartite/Test2_True.txt");
+        Assertions.assertEquals(true,
+                matchingBipartiteMaxModule.execute(GraphFactory.loadGraphFromFile(graph)));
+
+        graph = new File("Test_bipartite/Test3_False.txt");
+        Assertions.assertEquals(false,
+                matchingBipartiteMaxModule.execute(GraphFactory.loadGraphFromFile(graph)));
+
+        graph = new File("Test_bipartite/Test4_False.txt");
+        Assertions.assertEquals(false,
+                matchingBipartiteMaxModule.execute(GraphFactory.loadGraphFromFile(graph)));
+
+        graph = new File("Test_bipartite/Test5_True.txt");
+        Assertions.assertEquals(true,
+                matchingBipartiteMaxModule.execute(GraphFactory.loadGraphFromFile(graph)));
     }
 }

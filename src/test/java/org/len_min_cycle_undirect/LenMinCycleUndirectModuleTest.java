@@ -14,19 +14,23 @@ class LenMinCycleUndirectModuleTest {
     {
         LenMinCycleUndirectModule lenMinCycleUndirectModule = new LenMinCycleUndirectModule();
 
-        File graph = new File("Test_len_min_undirected/Test1_3.txt");
+        File graph = new File("Test_len_min_undirect/Test1_3.txt");
         Assertions.assertEquals(3,
                 lenMinCycleUndirectModule.execute(GraphFactory.loadGraphFromFile(graph)));
-        graph = new File("Test_len_min_undirected/Test2_4.txt");
+
+        graph = new File("Test_len_min_undirect/Test2_4.txt");
         Assertions.assertEquals(4,
                 lenMinCycleUndirectModule.execute(GraphFactory.loadGraphFromFile(graph)));
-        graph = new File("Test_len_min_undirected/Test3_6.txt");
+
+        graph = new File("Test_len_min_undirect/Test3_6.txt");
         Assertions.assertEquals(6,
                 lenMinCycleUndirectModule.execute(GraphFactory.loadGraphFromFile(graph)));
-        graph = new File("Test_len_min_undirected/Test4_3.txt");
+
+        graph = new File("Test_len_min_undirect/Test4_3.txt");
         Assertions.assertEquals(3,
                 lenMinCycleUndirectModule.execute(GraphFactory.loadGraphFromFile(graph)));
-        graph = new File("Test_len_min_undirected/Test5_0.txt");
+
+        graph = new File("Test_len_min_undirect/Test5_0.txt");
         Assertions.assertEquals(0,
                 lenMinCycleUndirectModule.execute(GraphFactory.loadGraphFromFile(graph)));
     }
