@@ -4,11 +4,11 @@ import com.mathsystem.api.graph.model.Edge;
 import com.mathsystem.api.graph.model.Graph;
 import com.mathsystem.api.graph.model.Vertex;
 import com.mathsystem.domain.graph.repository.GraphType;
-import com.mathsystem.domain.plugin.plugintype.GraphProperty;
+import com.mathsystem.domain.plugin.plugintype.GraphCharacteristic;
 
 import java.util.*;
 
-public class MatchingRandomMaxModule implements GraphProperty {
+public class MatchingRandomMaxModule implements GraphCharacteristic {
 
     int lca(int[] match, int[] base, int[] p, int a, int b)
     {
@@ -31,7 +31,7 @@ public class MatchingRandomMaxModule implements GraphProperty {
     }
 
     void markPath(int[] match, int[] base, boolean[] blossom, int[] p,
-                         int v, int b, int children)
+                  int v, int b, int children)
     {
         for (; base[v] != b; v = p[match[v]])
         {
@@ -117,7 +117,6 @@ public class MatchingRandomMaxModule implements GraphProperty {
         for (int i = 0; i < n; ++i)
             if (match[i] != -1)
             {
-                System.out.println(match[i]);
                 ++matches;
             }
 
@@ -127,7 +126,6 @@ public class MatchingRandomMaxModule implements GraphProperty {
     void Add_edge(Vector<Integer>[] gr, int x, int y, GraphType directType)
     {
         gr[x].add(y);
-        System.out.println(x + " " + y);
         if (directType == GraphType.UNDIRECTED)
             gr[y].add(x);
     }
@@ -172,13 +170,8 @@ public class MatchingRandomMaxModule implements GraphProperty {
 
 
     @Override
-    public boolean execute(Graph graph) {
+    public Integer execute(Graph graph) {
 
-        System.out.println("Maximum matching for the given graph is: "
-        + maxMatching(get_adj(graph.getVertices(), graph.getVertexCount(), graph.getEdges(), graph.getDirectType())));
-
-
-
-        return true;
+        return maxMatching(get_adj(graph.getVertices(), graph.getVertexCount(), graph.getEdges(), graph.getDirectType()));
     }
 }

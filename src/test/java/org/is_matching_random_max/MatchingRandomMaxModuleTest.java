@@ -14,7 +14,7 @@ class MatchingRandomMaxModuleTest {
         MatchingRandomMaxModule matchingRandomMaxModule = new MatchingRandomMaxModule();
 
         File graph = new File("Test_Random/Test1_3.txt");
-        Assertions.assertEquals(true,
+        Assertions.assertEquals(3,
                 matchingRandomMaxModule.execute(GraphFactory.loadGraphFromFile(graph)));
     }
 }
