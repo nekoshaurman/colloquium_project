@@ -14,7 +14,6 @@ class K5ModuleTest {
         K5Module k5Module = new K5Module();
 
         File graph = new File("Test_K5/Test1_True.txt");
-        Assertions.assertEquals(false,
-                k5Module.execute(GraphFactory.loadGraphFromFile(graph)));
+        Assertions.assertTrue(k5Module.execute(GraphFactory.loadGraphFromFile(graph)));
     }
 }

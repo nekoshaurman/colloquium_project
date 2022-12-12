@@ -19,7 +19,7 @@ public class K5Module implements GraphProperty {
     static Vector<Integer>[] graph = new Vector[N];
     @SuppressWarnings("unchecked")
     static Vector<Integer>[] cycles = new Vector[N];
-    static int cyclenumber;
+    static int cyclenumber = 0;
 
     // Function to mark the vertex with
     // different colors for different cycles
@@ -115,7 +115,7 @@ public class K5Module implements GraphProperty {
             int from = find(vert, tmp.getFromV());
             int to = find(vert, tmp.getToV());
             graph[from].add(to);
-            graph[to].add(to);
+            graph[to].add(from);
         }
     }
 
