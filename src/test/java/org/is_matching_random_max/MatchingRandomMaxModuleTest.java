@@ -13,8 +13,8 @@ class MatchingRandomMaxModuleTest {
     void TestMatchingRandomMaxModule() throws FileNotFoundException {
         MatchingRandomMaxModule matchingRandomMaxModule = new MatchingRandomMaxModule();
 
-        File graph = new File("Test_Random/Test1_False.txt");
-        Assertions.assertEquals(false,
+        File graph = new File("Test_Random/Test1_3.txt");
+        Assertions.assertEquals(true,
                 matchingRandomMaxModule.execute(GraphFactory.loadGraphFromFile(graph)));
     }
 }
