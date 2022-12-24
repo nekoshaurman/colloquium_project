@@ -12,7 +12,7 @@ public class LenMinCycleDirectModule implements GraphCharacteristic {
     Graph graph;
     ArrayList<Vector<Integer>> adj;
     int vertexCount;
-    int max_cycle_len;
+    int maxCycleLen;
     UUID[] vertices;
 
     @Override
@@ -28,13 +28,14 @@ public class LenMinCycleDirectModule implements GraphCharacteristic {
     }
 
     private int getMinCycleLen() {
-        this.max_cycle_len = this.vertexCount + 1;
-        int min_len = this.max_cycle_len;
+        this.maxCycleLen = this.vertexCount + 1;
+        int min_len = this.maxCycleLen;
+
         for (int i = 0; i < vertexCount; i++) {
             min_len = Math.min(getMinCycleLenFromVert(i), min_len);
         }
 
-        if (min_len == this.max_cycle_len) {
+        if (min_len == this.maxCycleLen) {
             min_len = 0;
         }
 
@@ -42,22 +43,25 @@ public class LenMinCycleDirectModule implements GraphCharacteristic {
     }
 
     private int getMinCycleLenFromVert(int start) {
+        // Используем алгоритм поиска в ширину
+
         int[] dist = new int[this.vertexCount];
-        Arrays.fill(dist, this.vertexCount + 1);
+        Arrays.fill(dist, this.maxCycleLen);
         dist[start] = 0;
 
         Queue<Integer> q = new LinkedList<>();
         q.add(start);
 
         while (!q.isEmpty()) {
-            int v = q.poll();
-            for (int u : this.adj.get(v)) {
-                if (dist[u] > dist[v] + 1) {
-                    dist[u] = dist[v] + 1;
-                    q.add(u);
+            int parent = q.poll();
+            for (int child : this.adj.get(parent)) {
+
+                if (dist[child] > dist[parent] + 1) {
+                    dist[child] = dist[parent] + 1;
+                    q.add(child);
                 }
-                if (u == start && dist[start] == 0) {
-                    dist[start] = dist[v] + 1;
+                if ((child == start) && (dist[start] == 0)) {
+                    dist[start] = dist[parent] + 1;
                 }
             }
         }
@@ -70,15 +74,16 @@ public class LenMinCycleDirectModule implements GraphCharacteristic {
         this.adj = new ArrayList<>();
         this.vertices = new UUID[vertexCount];
 
+        // Инициализируем список смежности
         for (int i = 0; i < vertexCount; i++)
             this.adj.add(new Vector<>());
 
-        // Добавляем все id вершин графа в массив вершин графа
+        // Запалняем массив вершин
         int i = 0;
         for (Map.Entry<UUID, Vertex> f : this.graph.getVertices().entrySet())
             this.vertices[i++] = f.getKey();
 
-        // Проходимся по всем ребрам и заполняем список смежности(вершина откуда начинается ребро, куда идет ребро)
+        // Заполняем список смежности
         for (Edge edge : this.graph.getEdges()){
             int from = findInVertices(edge.getFromV());
             int to = findInVertices(edge.getToV());
