@@ -1,0 +1,30 @@
+UNDIRECTED 12
+ 16
+8ae72394-c4e9-4d61-baf0-301c495f5e48 gray null null 312 133
+f3f06345-1394-4d39-9971-b0cc9bdbf5d3 gray null null 471 129
+400cf78a-49cf-4283-9d6d-04adb7660ec7 gray null null 313 272
+ad8aab96-2a59-4272-af75-0b2dcd01a827 gray null null 472 270
+6e9210f5-4fe8-4a2d-9336-306afb6bf7cf gray null null 305 420
+2bf295e1-2fd0-41fb-a319-2af3073fa3b7 gray null null 494 392
+c688aa38-4823-4796-ab2b-9b89eaecadef gray null null 298 548
+26e365ec-0320-4899-84f8-e095923ca5bb gray null null 516 547
+9d91a9f4-0a5f-417a-8b52-63caa554dd73 gray null null 614 258
+b94b17d4-b692-4cbf-9e28-9b79ad8f2aa5 gray null null 623 402
+73416649-c866-4822-9b48-cc2524f75053 gray null null 145 268
+47b698de-91b3-4ebe-afc0-246f310791d6 gray null null 142 405
+8ae72394-c4e9-4d61-baf0-301c495f5e48 f3f06345-1394-4d39-9971-b0cc9bdbf5d3 gray null null 
+400cf78a-49cf-4283-9d6d-04adb7660ec7 ad8aab96-2a59-4272-af75-0b2dcd01a827 gray null null 
+8ae72394-c4e9-4d61-baf0-301c495f5e48 ad8aab96-2a59-4272-af75-0b2dcd01a827 gray null null 
+f3f06345-1394-4d39-9971-b0cc9bdbf5d3 400cf78a-49cf-4283-9d6d-04adb7660ec7 gray null null 
+6e9210f5-4fe8-4a2d-9336-306afb6bf7cf 2bf295e1-2fd0-41fb-a319-2af3073fa3b7 gray null null 
+2bf295e1-2fd0-41fb-a319-2af3073fa3b7 ad8aab96-2a59-4272-af75-0b2dcd01a827 gray null null 
+400cf78a-49cf-4283-9d6d-04adb7660ec7 6e9210f5-4fe8-4a2d-9336-306afb6bf7cf gray null null 
+6e9210f5-4fe8-4a2d-9336-306afb6bf7cf 26e365ec-0320-4899-84f8-e095923ca5bb gray null null 
+c688aa38-4823-4796-ab2b-9b89eaecadef 2bf295e1-2fd0-41fb-a319-2af3073fa3b7 gray null null 
+c688aa38-4823-4796-ab2b-9b89eaecadef 26e365ec-0320-4899-84f8-e095923ca5bb gray null null 
+ad8aab96-2a59-4272-af75-0b2dcd01a827 9d91a9f4-0a5f-417a-8b52-63caa554dd73 gray null null 
+2bf295e1-2fd0-41fb-a319-2af3073fa3b7 b94b17d4-b692-4cbf-9e28-9b79ad8f2aa5 gray null null 
+9d91a9f4-0a5f-417a-8b52-63caa554dd73 b94b17d4-b692-4cbf-9e28-9b79ad8f2aa5 gray null null 
+73416649-c866-4822-9b48-cc2524f75053 47b698de-91b3-4ebe-afc0-246f310791d6 gray null null 
+47b698de-91b3-4ebe-afc0-246f310791d6 400cf78a-49cf-4283-9d6d-04adb7660ec7 gray null null 
+73416649-c866-4822-9b48-cc2524f75053 6e9210f5-4fe8-4a2d-9336-306afb6bf7cf gray null null 
