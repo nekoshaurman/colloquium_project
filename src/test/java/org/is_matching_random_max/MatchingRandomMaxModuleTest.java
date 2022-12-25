@@ -28,5 +28,8 @@ class MatchingRandomMaxModuleTest {
         graph = new File("Test_Random/Test5_6.txt");
         Assertions.assertEquals(6,
                 matchingRandomMaxModule.execute(GraphFactory.loadGraphFromFile(graph)));
+        graph = new File("Test_Random/Test6_3.txt");
+        Assertions.assertEquals(3,
+                matchingRandomMaxModule.execute(GraphFactory.loadGraphFromFile(graph)));
     }
 }
