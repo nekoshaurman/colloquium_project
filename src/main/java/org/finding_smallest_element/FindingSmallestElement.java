@@ -10,59 +10,12 @@ import java.util.*;
 
 public class FindingSmallestElement implements GraphProperty {
 
-    private int V;
+
     UUID[] vert;
     private ArrayList<ArrayList<Integer>> adj;
 
     // A recursive function used by topologicalSort
-    void topologicalSortUtil(int v, boolean[] visited,
-                             Stack<Integer> stack)
-    {
-        // Mark the current node as visited.
-        visited[v] = true;
-        Integer i;
 
-        // Recur for all the vertices adjacent
-        // to thisvertex
-        for (Integer integer : adj.get(v)) {
-            i = integer;
-            if (!visited[i])
-                topologicalSortUtil(i, visited, stack);
-        }
-
-        // Push current vertex to stack
-        // which stores result
-        stack.push(v);
-    }
-
-    // The function to do Topological Sort.
-    // It uses recursive topologicalSortUtil()
-    UUID topologicalSort()
-    {
-        Stack<Integer> stack = new Stack<>();
-
-        // Mark all the vertices as not visited
-        boolean[] visited = new boolean[V];
-        for (int i = 0; i < V; i++)
-            visited[i] = false;
-
-        // Call the recursive helper
-        // function to store
-        // Topological Sort starting
-        // from all vertices one by one
-        for (int i = 0; i < V; i++)
-            if (!visited[i])
-                topologicalSortUtil(i, visited, stack);
-        UUID min_elem = null;
-        // Print contents of stack
-        while (!stack.empty())
-        {
-            min_elem = convert(stack.pop());
-        }
-
-        return min_elem;
-
-    }
 
     void Add_edge(int x, int y)
     {
@@ -92,11 +45,12 @@ public class FindingSmallestElement implements GraphProperty {
 
     // Функция составления списка графа
     // g - список вершин, Vertex_count - количество вершин, edges - список ребер
-    void get_adj(Map<UUID, Vertex> g, Integer Vertex_count, List<Edge> edges) {
+    boolean get_adj(Map<UUID, Vertex> g, Integer Vertex_count, List<Edge> edges, UUID ver) {
         // gr - список смежности
         adj = new ArrayList<>(Vertex_count);
+        int[] out = new int[Vertex_count];
 
-        V = Vertex_count;
+
 
         for (int i = 0; i < Vertex_count; i++)
             adj.add(new ArrayList<>());
@@ -113,21 +67,38 @@ public class FindingSmallestElement implements GraphProperty {
         for (Edge tmp : edges) {
             int from = find(tmp.getFromV());
             int to = find(tmp.getToV());
+            out[from] += 1;
             Add_edge(from, to);
         }
+        int min = Integer.MAX_VALUE;
+        for (int elem : out)
+        {
+            if (min > elem)
+                min = elem;
+        }
+        for (int jj = 0; jj<Vertex_count; jj++)
+        {
+            if ((out[jj] == min) & (convert(jj) == ver))
+            {
+                return true;
+            }
+        }
+        return false;
     }
+
 
 
 
     @Override
     public boolean execute(Graph graph) {
-        get_adj(graph.getVertices(), graph.getVertexCount(), graph.getEdges());
         Color red_color = Color.valueOf("red");
+        UUID ver = null;
 
         int flag = 0;
 
         for (Map.Entry<UUID, Vertex> f : graph.getVertices().entrySet()) {
             if (f.getValue().getColor() == red_color) {
+                ver = f.getValue().getId();
                 ++flag;
                 if (flag > 1) {
                     break;
@@ -135,7 +106,6 @@ public class FindingSmallestElement implements GraphProperty {
             }
         }
 
-        return (flag == 1) & (graph.getVertices().get(topologicalSort()).getColor() == red_color);
-
+        return (flag == 1) & get_adj(graph.getVertices(), graph.getVertexCount(), graph.getEdges(), ver);
     }
 }
