@@ -93,7 +93,7 @@ public class LenMinCycleUndirectModule implements GraphCharacteristic {
                         // Увеличиваем расстояние на 1
                         dist[child] = 1 + dist[x];
 
-                        // Меняем родителя
+                        // Меняем текующую вершину
                         par[child] = x;
 
                         // Добавляем в очередь

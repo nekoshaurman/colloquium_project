@@ -90,7 +90,7 @@ public class FindingSmallestElement implements GraphProperty {
         return r;
     }
 
-    // Функция составления матрицы смежности графа
+    // Функция составления списка графа
     // g - список вершин, Vertex_count - количество вершин, edges - список ребер
     void get_adj(Map<UUID, Vertex> g, Integer Vertex_count, List<Edge> edges) {
         // gr - список смежности
