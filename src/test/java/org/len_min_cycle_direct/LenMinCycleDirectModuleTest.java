@@ -28,5 +28,9 @@ class LenMinCycleDirectModuleTest {
         graph = new File("Test_len_min_direct/test4_answer_0.txt");
         Assertions.assertEquals(0,
                 lenMinCycleDirectModule.execute(GraphFactory.loadGraphFromFile(graph)));
+
+        graph = new File("Test_len_min_direct/test5_answer_2.txt");
+        Assertions.assertEquals(2,
+                lenMinCycleDirectModule.execute(GraphFactory.loadGraphFromFile(graph)));
     }
 }

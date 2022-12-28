@@ -66,6 +66,9 @@ public class LenMinCycleDirectModule implements GraphCharacteristic {
             }
         }
 
+        if (dist[start] == 0)
+            dist[start] = this.maxCycleLen;
+
         return dist[start];
     }
 
